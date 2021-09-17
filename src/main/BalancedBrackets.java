@@ -23,13 +23,33 @@ public class BalancedBrackets {
      */
     public static boolean hasBalancedBrackets(String str) {
         int brackets = 0;
+        boolean rightOrder = false;
         for (char ch : str.toCharArray()) {
-            if (ch == '[') {
+            if (ch == ']' & rightOrder == false) {
+                return false;
+            } else if (ch == '[') {
                 brackets++;
+                rightOrder = true;
             } else if (ch == ']') {
                 brackets--;
+                rightOrder = false;
             }
         }
         return brackets == 0;
     }
 }
+
+//  [The original method is below -- the problem is that this doesn't
+//  require the brackets to be in the right order. Gotta fix it!]
+
+//    public static boolean hasBalancedBrackets(String str) {
+//        int brackets = 0;
+//        for (char ch : str.toCharArray()) {
+//            if (ch == '[') {
+//                brackets++;
+//            } else if (ch == ']') {
+//                brackets--;
+//            }
+//        }
+//        return brackets == 0;
+//    }
